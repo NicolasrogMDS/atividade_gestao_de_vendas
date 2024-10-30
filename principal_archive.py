@@ -42,8 +42,8 @@ def limpar_terminal():
 
 def menu_principal():
     limpar_terminal()
-
     print("""
+Loja de Instrumentos Musicais (Sistema de Gerenciamento de Estoque)
 1 - Adicionar um produto ao estoque
 2 - Alterar p preço de um produto
 3 - Renomear um produto
