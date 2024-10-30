@@ -44,8 +44,9 @@ def menu_principal():
     limpar_terminal()
     print("""
 Loja de Instrumentos Musicais (Sistema de Gerenciamento de Estoque)
+          
 1 - Adicionar um produto ao estoque
-2 - Alterar p preço de um produto
+2 - Alterar o preço de um produto
 3 - Renomear um produto
 4 - Remover um produto
 5 - Verificar todos os produtos no estoque
@@ -64,11 +65,13 @@ def adicionar_produto():
 def alterar_preco_produto(nome_do_produto):
     produto = session.query(Produto).filter(Produto.nome == nome_do_produto).first()
     produto.preco = input("Digite o novo preço do produto em R$: ")
+    sleep(1)
     session.commit()
 
 def renomear_produto(nome_do_produto):
     produto = session.query(Produto).filter(Produto.nome == nome_do_produto).first()
-    produto.nome = input("Novo nome do produto: ")    
+    produto.nome = input("Novo nome do produto: ")
+    sleep(1)    
     session.commit()
 
 def remover_produto():
@@ -103,9 +106,13 @@ while True:
         case 2:
             nome_do_produto = input("\nInforme o nome do produto que deseja alterar o preço: ")
             alterar_preco_produto(nome_do_produto)
+            print("Preço alterado.")
+            sleep(1)
         case 3:
             nome_do_produto = input("\nInforme o nome do produto que deseja renomear: ").lower()
             renomear_produto(nome_do_produto)
+            print("Produto renomeado.")
+            sleep(1)
         case 4:
             limpar_terminal()
             remover_produto()
