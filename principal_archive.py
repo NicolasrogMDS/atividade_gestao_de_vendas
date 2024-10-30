@@ -62,7 +62,7 @@ def adicionar_produto():
     return produto
 
 def alterar_preco_produto(nome_do_produto):
-    produto = session.querry(Produto).filter(Produto.nome == nome_do_produto).first
+    produto = session.query(Produto).filter(Produto.nome == nome_do_produto).first()
     produto.preco = input("Digite o novo preço do produto em R$: ")
     session.commit()
 
