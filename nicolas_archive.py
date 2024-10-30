@@ -39,3 +39,9 @@ def remover_produto():
     produto = session.query(Produto).filter_by(nome = nome_produto).first()
     session.delete(produto)
     session.commit()
+
+def verificar_todos_os_produtos():
+    lista_produtos = session.query(Produto).all()
+    for produto in lista_produtos:
+        print(f"\nNome: {produto.nome}")
+        print(f"Preço: {produto.preco}")
