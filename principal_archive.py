@@ -36,10 +36,6 @@ def __init__(self,nome:str, preco:float):
 #Criando tabela de dados, no banco de dados:
 Base.metadata.create_all(bind=BD)
 
-from os import system
-
-#limpar terminal
-
 def limpar_terminal():
     system("cls||clear")
 
@@ -64,7 +60,19 @@ def adicionar_produto():
     session.commit()
     return produto
 
-def alterar_preco_produto():
+def alterar_preco_produto(nome_do_produto):
     produto = session.querry(Produto).filter(Produto.nome == nome_do_produto).first
     produto.preco = input("Digite o novo preço do produto: ")
+    session.commit()
+
+def renomear_produto(nome_do_produto):
+    produto = session.query(Produto).filter(Produto.nome == nome_do_produto).first()
+    produto.nome = input("Novo nome do produto: ")    
+    session.commit()
+
+def remover_produto():
+    print("\nRemovendo produto:")
+    nome_produto = input("Infome o nome do produto para que ele excluído: ").lower()
+    produto = session.query(Produto).filter_by(nome = nome_produto).first()
+    session.delete(produto)
     session.commit()
