@@ -45,3 +45,42 @@ def verificar_todos_os_produtos():
     for produto in lista_produtos:
         print(f"\nNome: {produto.nome}")
         print(f"Preço: {produto.preco}")
+        
+while True:
+    while True:
+        menu_de_opcoes()
+        opcao = int(input("Insira a opção desejada: "))
+        if opcao == 1 or 2 or 3 or 4 or 5 or 6:
+            break
+        else:
+            print("Opção inválida. Por favor, tente novamente.")
+    match (opcao):
+        case 1:
+            while True:
+                limpar_tela()
+                produto = adicionar_produto()
+                opcao1 = int(input("Deseja adicionar outro produto? \n1- Sim\n2- Não \nInsira a opção desejada: "))
+                if opcao1 == 2:
+                    break
+        case 2:
+            nome_do_produto = input("\nInforme o nome do produto que deseja alterar o preço: ")
+            alterar_preco_produto(nome_do_produto)
+        case 3:
+            nome_do_produto = input("\nInforme o nome do produto que deseja renomear: ").lower()
+            renomear_produto(nome_do_produto)
+        case 4:
+            limpar_tela()
+            remover_produto()
+            print("Produto removido.")
+            sleep(2)
+        case 5:
+            limpar_tela()
+            print("\nTodos os produtos registrados no estoque:")
+            verificar_todos_os_produtos()
+            sleep(5)
+        case 6:
+            print("Sistema encerrado.")
+            sleep(1)
+            break
+        case _:
+            print("Opção inválida. Por favor, tente novamente.")
