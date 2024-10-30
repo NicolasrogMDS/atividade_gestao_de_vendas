@@ -37,6 +37,7 @@ def __init__(self,nome:str, preco:float):
 Base.metadata.create_all(bind=BD)
 
 def limpar_terminal():
+    sleep(1)
     system("cls||clear")
 
 def menu_principal():
@@ -53,9 +54,9 @@ def menu_principal():
     
 def adicionar_produto():
     produto = Produto (
-        nome = input("insira o nome do produto: ")
+        nome = input("insira o nome do produto: "),
         preco = float(input("Insira o preço do produto: "))     
-    )
+        )
     session.add(produto)
     session.commit()
     return produto
